@@ -2,7 +2,7 @@
     let title;
     form.addEventListener("submit",function(e){
         e.preventDefault();
-        console.log("done");
+        
         title = document.forms["myForm"]["fname"].value;
         if (title == "") {
             return false;
