@@ -12,21 +12,27 @@
         xhr.open('GET',url,true);
         xhr.onload = function(){
             if(this.status == 200){
-                console.log(this.responseText);
-                document.getElementById("demo").innerHTML = this.responseText;
+                // document.getElementById("demo").innerHTML = this.responseText;
                 let res = JSON.parse(this.responseText);
-                document.getElementById("demo").innerHTML = `<img src = ${res.Poster}>
-                <h3>${res.Title}</h3>
-                <p><span>Released Year</span>: ${res.Released}</p>
-                <p><span>Genre</span>: ${res.Genre}</p>
-                <p><span>Director</span>: ${res.Director}</p>
-                <p><span>Ratings</span>: ${res.Ratings[0].Value}</p>
-                <p><span>Awards</span>: ${res.Awards}</p>
-                <p> <span>Plot</span>: ${res.Plot}</p>
+                    document.getElementById("demo").innerHTML = `
+                  <div class="image">
+                    <img src = ${res.Poster}>
+                    <h3>${res.Title}</h3>
+                  </div>
+                    <div class="description">
+                        <p><span>Released Year</span>: ${res.Released}</p>
+                        <p><span>Genre</span>: ${res.Genre}</p>
+                        <p><span>Director</span>: ${res.Director}</p>
+                        <p><span>Ratings</span>: ${res.Ratings[0].Value}</p>
+                        <p><span>Awards</span>: ${res.Awards}</p>
+                    </div>
+                    <div class="plot">
+                        <p> <span>Plot</span>: ${res.Plot}</p>
+                    </div>
                 `;
             }
             else if(this.status == 404){
-                console.log("Error");
+                alert("Connection Error!")
             }
             else{
                 console.log("Nothing Happened");
